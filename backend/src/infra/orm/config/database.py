@@ -13,10 +13,10 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-def criar_bd():
+def create_db():
     Base.metadata.create_all(bind=engine)
 
-def get_bd():
+def get_db():
     try:
         db = SessionLocal()
         yield db

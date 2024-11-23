@@ -8,6 +8,7 @@ class User( Base ):
     #CPF e EMAIL são únicos por Usuário
     id: Mapped[str] = mapped_column(primary_key=True)
     cpf_cnpj: Mapped[str] = mapped_column(nullable=False, unique=True)
+    name: Mapped[str] = mapped_column(nullable=False)
     email: Mapped[str] = mapped_column(nullable=False, unique=True)
     password: Mapped[str] = mapped_column(nullable=False)
     type: Mapped[str] = mapped_column(nullable=False)
