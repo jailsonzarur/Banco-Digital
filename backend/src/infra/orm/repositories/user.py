@@ -11,8 +11,7 @@ class UserRepositorie:
 
     def create_user(self, user: schemas.User):
         user = models.User(id=str(uuid4()), cpf_cnpj=user.cpf_cnpj, 
-                           name=user.name, email=user.email, password=user.password, 
-                           type=self.type)
+                           name=user.name, email=user.email, password=user.password)
         
         self.db.add(user)
         self.db.commit()
@@ -20,8 +19,10 @@ class UserRepositorie:
         return user
     
     def get_user_by_email(self, email: str):
-        teste = self.db.execute(text("SELECT * FROM users WHERE email = :value"), {"value": email})
-        return teste
+        user = self.db.query(models.User).filter(models.User.email == email).first() 
+        return user
+    
+
     
     
          
